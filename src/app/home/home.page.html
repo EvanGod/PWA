@@ -1,20 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <strong>Hola mundo</strong>
+    
+    <ion-button (click)="showMessage()" class="button">Mostrar mensaje</ion-button>
+  
+    <div *ngIf="messageVisible" class="message-box">
+      Hi!!, ¡EvanGod!, well done!!
+    </div>
   </div>
+
+  <div id="login-container">
+    <ion-input type="text" placeholder="Username" [(ngModel)]="username" (input)="validateFields()"></ion-input>
+    <ion-input type="password" placeholder="Password" [(ngModel)]="password" (input)="validateFields()"></ion-input>
+    <ion-button [disabled]="!isValid" (click)="showModal()">Ingresar</ion-button>
+    <ion-button fill="clear" (click)="goToRegister()" class="register-btn">¿No tienes cuenta? Regístrate</ion-button>
+    
+  </div>
+  
 </ion-content>

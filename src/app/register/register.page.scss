@@ -1,0 +1,76 @@
+#register-container {
+    max-width: 400px;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+    border-radius: 16px;
+    background: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .scroll-container {
+    overflow-y: auto;
+    max-height: 60vh;
+    padding-right: 10px;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+  }
+  
+  .scroll-container::-webkit-scrollbar {
+    display: none; 
+  }
+  
+  strong {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    display: block;
+  }
+  
+  ion-item {
+    margin-bottom: 10px;
+  }
+  
+  ion-input {
+    --background: #fff;
+    --color: #333;
+    --border-radius: 8px;
+    padding: 10px;
+  }
+  
+  ion-button {
+    --background: #6200ee;
+    --background-hover: #3700b3;
+    --color: #fff;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  ion-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .register-btn {
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .error-msg {
+    color: red;
+    font-size: 14px;
+    text-align: left;
+    margin-left: 15px;
+  }
+  
