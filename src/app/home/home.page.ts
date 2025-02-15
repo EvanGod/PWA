@@ -91,3 +91,5 @@ export class HomePage implements OnInit {
     }, 3000);
   }
 }
+
+//author: Evan Salvador Gálvez Barajas

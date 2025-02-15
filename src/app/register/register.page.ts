@@ -115,3 +115,5 @@ export class RegisterPage {
     this.navCtrl.navigateBack('/home'); 
   }
 }
+
+//author: Evan Salvador Gálvez Barajas

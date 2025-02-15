@@ -29,3 +29,6 @@ export class InicioPage implements OnInit {
     this.navCtrl.navigateBack('/home');
   }
 }
+
+
+//author: Evan Salvador Gálvez Barajas
