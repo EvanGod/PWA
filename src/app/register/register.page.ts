@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 
+interface User {
+  email: string;
+  fullName: string;
+  username: string;
+  password: string;
+  birthDate: string;
+}
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -21,24 +29,15 @@ export class RegisterPage {
   passwordValid: boolean = true;
   usernameValid: boolean = true;
   birthDateValid: boolean = true;
-  userRecords: any[] = [];
 
   constructor(public navCtrl: NavController, private alertController: AlertController) {}
 
   validateForm() {
-    
     this.emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email);
-
-    
     this.usernameValid = !this.username.includes(' ');
-
-    
     this.passwordsMatch = this.password === this.confirmPassword;
-
-    
     this.birthDateValid = this.isValidAge(this.birthDate);
 
-    
     this.formValid =
       this.emailValid &&
       this.email.trim() !== '' &&
@@ -66,7 +65,6 @@ export class RegisterPage {
     this.username = this.username.replace(/\s/g, '');
     this.validateForm();
   }
-  
 
   isValidAge(birthDate: string): boolean {
     if (!birthDate) return false;
@@ -82,7 +80,9 @@ export class RegisterPage {
   async registerUser() {
     if (!this.formValid) return;
 
-    const userExists = this.userRecords.some(user => user.username === this.username || user.email === this.email);
+    const storedUsers: User[] = JSON.parse(localStorage.getItem('userRecords') || '[]');
+
+    const userExists = storedUsers.some((user: User) => user.username === this.username || user.email === this.email);
     if (userExists) {
       const alert = await this.alertController.create({
         header: 'Error',
@@ -93,7 +93,7 @@ export class RegisterPage {
       return;
     }
 
-    const newUser = {
+    const newUser: User = {
       email: this.email,
       fullName: this.fullName,
       username: this.username,
@@ -101,8 +101,9 @@ export class RegisterPage {
       birthDate: this.birthDate,
     };
 
-    this.userRecords.push(newUser);
-    console.log('Usuarios Registrados:', this.userRecords);
+    storedUsers.push(newUser);
+    localStorage.setItem('userRecords', JSON.stringify(storedUsers));
+    console.log('Usuarios Registrados:', storedUsers);
 
     const alert = await this.alertController.create({
       header: 'Registro Exitoso',

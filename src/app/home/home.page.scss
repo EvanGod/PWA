@@ -1,3 +1,57 @@
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  max-width: 300px; 
+}
+
+.app-logo {
+  width: 100%;  
+  max-width: 150px;  
+  height: auto;  
+  object-fit: contain;  
+  margin-bottom: 10px; 
+}
+
+.loading-bar {
+  width: 60%; 
+  height: 4px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.loading-bar .loading-inner {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #6200ee, #3700b3);
+  animation: loadingBar 3s linear forwards;
+}
+
+@keyframes loadingBar {
+  0% { left: -100%; }
+  100% { left: 0; }
+}
+
+.login-success-loading {
+  --spinner-color: #6200ee;  
+  --background: rgba(0, 0, 0, 0.4);  
+}
+
+ion-spinner[name="crescent"] {
+  --spinner-color: #6200ee;  
+}
+
 #container {
   max-width: 400px;
   width: 100%;
@@ -17,27 +71,6 @@
   color: #333;
   margin-bottom: 20px;
   display: block;
-}
-
-#container ion-button {
-  --background: #6200ee;
-  --background-hover: #3700b3;
-  --color: #fff;
-  margin-top: 15px;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 16px;
-}
-
-.message-box {
-  margin-top: 20px;
-  padding: 10px 15px;
-  background: #e0f7fa;
-  color: #006064;
-  border: 1px solid #006064;
-  border-radius: 8px;
-  font-size: 16px;
-  text-align: center;
 }
 
 #login-container {
@@ -82,6 +115,6 @@
 
 .register-btn {
   width: 100%;
-  margin-top: 10px; /* Separación del botón 'Ingresar' */
-  text-align: center; /* Alineación de texto */
+  margin-top: 10px; 
+  text-align: center; 
 }

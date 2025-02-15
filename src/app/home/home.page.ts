@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +9,22 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage {
+export class HomePage implements OnInit {
   messageVisible = false;
   username: string = '';
   password: string = '';
   isValid = false;
+  isLoading = true; 
 
-  constructor(private alertController: AlertController, private navCtrl: NavController) {}
+  constructor(
+    private alertController: AlertController,
+    private navCtrl: NavController,
+    private loadingController: LoadingController
+  ) {}
+
+  ngOnInit() {
+    this.showLoadingInit();
+  }
 
   showMessage() {
     this.messageVisible = true;
@@ -26,20 +36,58 @@ export class HomePage {
   goToRegister() {
     this.navCtrl.navigateForward('/register');
   }
-  
+
   validateFields() {
     this.username = this.username.toLowerCase().trim();
     this.password = this.password.trim();
     this.isValid = this.username !== '' && this.password !== '' && !this.username.includes(' ') && !this.password.includes(' ');
   }
 
-  async showModal() {
-    const alert = await this.alertController.create({
-      header: 'Información ingresada',
-      message: `Username: ${this.username}      Password: ${this.password}`,
-      buttons: ['OK'],
+  async showLoadingInit() {
+    this.isLoading = true;  
+    setTimeout(() => {
+      this.isLoading = false;  
+    }, 3000);
+  }
+
+  async login() {
+
+    const storedUsers = JSON.parse(localStorage.getItem('userRecords') || '[]');
+    const user = storedUsers.find(
+      (storedUser: any) => storedUser.username === this.username && storedUser.password === this.password
+    );
+
+    if (user) {
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
+
+      await this.showLoadingLoginSuccess();  
+
+      this.navCtrl.navigateForward('/inicio');
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: 'Nombre de usuario o contraseña incorrectos.',
+        buttons: ['OK'],
+      });
+      await alert.present();
+    }
+
+    this.isLoading = false; 
+  }
+
+  async showLoadingLoginSuccess() {
+
+    const loading = await this.loadingController.create({
+      spinner: 'crescent',  
+      message: 'Verificando credenciales...',
+      duration: 3000,  
+      cssClass: 'login-success-loading', 
     });
 
-    await alert.present();
+    await loading.present();
+    setTimeout(() => {
+      this.isLoading = false; 
+      loading.dismiss();
+    }, 3000);
   }
 }
