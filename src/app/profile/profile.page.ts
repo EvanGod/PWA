@@ -38,10 +38,9 @@ export class ProfilePage implements OnInit {
     console.log('Token descifrado:', decryptedToken);
 
     if (decryptedToken && decryptedToken.username) {
-      this.username = decryptedToken.username;  // Ahora obtenemos el username del token
+      this.username = decryptedToken.username; 
       console.log('Username del usuario logueado:', this.username);
 
-      // Desencriptamos el rol
       const decryptedRole = this.decryptRole(decryptedToken.role);
       console.log('Rol desencriptado:', decryptedRole);
       this.role = decryptedRole;
@@ -125,3 +124,5 @@ export class ProfilePage implements OnInit {
     this.navCtrl.navigateBack('/inicio');
   }
 }
+
+///*Autor: Evan Salvador Gálvez Barajas 2022171006*/

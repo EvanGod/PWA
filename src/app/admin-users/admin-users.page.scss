@@ -1,4 +1,3 @@
-/* Estilos generales */
 ion-header {
     --background: #6200ee;
     --color: white;
@@ -18,7 +17,6 @@ ion-title {
     text-transform: uppercase;
 }
 
-/* Diseño de las pestañas */
 ion-tab-bar {
     --background: #f9f9f9;
     border-bottom: 1px solid #ddd;
@@ -39,7 +37,6 @@ ion-tab-button:hover {
     transform: scale(1.1);
 }
 
-/* Contenedor principal */
 #add-user-container, #view-users-container {
     max-width: 400px;
     width: 90%;
@@ -59,12 +56,11 @@ ion-tab-button:hover {
     border: 1px solid #ddd;
 }
 
-/* Contenedor de los usuarios */
 #view-users-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 50px 15px 15px 15px;  /* Añadido espacio arriba para que no se solape el botón */
+    padding: 50px 15px 15px 15px;  
     max-height: 60vh;
     overflow-y: scroll;
     scrollbar-width: thin;
@@ -84,7 +80,6 @@ ion-tab-button:hover {
     background: transparent;
 }
 
-/* Ajustes de estilo para el contenedor scrollable */
 .scroll-container {
     overflow-y: auto;
     max-height: 60vh;
@@ -160,7 +155,6 @@ ion-button:disabled {
     font-weight: 500;
 }
 
-/* Modal de edición */
 ion-modal {
     --background: white;
     --border-radius: 12px;
@@ -183,7 +177,6 @@ ion-modal ion-button {
     border-radius: 8px;
 }
 
-/* Diseño de la lista de usuarios */
 ion-list {
     margin-top: 20px;
     padding: 10px 0;
@@ -202,28 +195,29 @@ ion-item:hover {
     transform: translateY(-2px);
 }
 
-/* Estilo del botón "Volver al inicio" - parte superior */
 .go-home-btn {
     --background: #6200ee;
     --background-hover: #3700b3;
     --color: white;
     border-radius: 50%;
-    padding: 6px 12px; /* Botón pequeño */
-    font-size: 12px; /* Fuente pequeña */
+    padding: 6px 12px;
+    font-size: 12px; 
     position: absolute;
-    top: 15px; /* Ajustado a la parte superior */
+    top: 15px;
     left: 50%;
-    transform: translateX(-50%); /* Centrado horizontalmente */
-    min-width: 80px; /* Asegura un tamaño mínimo */
-    text-align: center; /* Centrado del texto */
-    transition: background 0.3s ease-in-out; /* Cambio suave del color */
+    transform: translateX(-50%); 
+    min-width: 80px; 
+    text-align: center; 
+    transition: background 0.3s ease-in-out; 
 }
 
 .go-home-btn:hover {
-    background: #3700b3; /* Cambio de color al pasar el mouse */
-    box-shadow: 0 0 8px 2px rgba(55, 0, 179, 0.5); /* Efecto de resplandor */
+    background: #3700b3; 
+    box-shadow: 0 0 8px 2px rgba(55, 0, 179, 0.5); 
 }
 
 .go-home-btn:focus {
     outline: none;
 }
+
+/*Autor: Evan Salvador Gálvez Barajas 2022171006*/

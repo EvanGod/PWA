@@ -89,18 +89,17 @@ export class AdminUsersPage implements OnInit {
     return age >= 18;
   }
 
-  // Elimina los espacios en blanco en el campo de nombre de usuario
   removeSpaces() {
     this.newUser.username = this.newUser.username.replace(/\s+/g, '');
   }
   formatFullName() {
     this.newUser.fullName = this.newUser.fullName.toUpperCase();
   }
-  // Valida la contraseña
+
   validatePassword() {
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     this.passwordValid = passwordPattern.test(this.newUser.password);
-    this.validateForm(); // Revalidar el formulario después de la validación de la contraseña
+    this.validateForm(); 
   }
 
  
@@ -121,7 +120,7 @@ export class AdminUsersPage implements OnInit {
 
     this.newUser = { fullName: '', username: '', password: '', email: '', birthDate: '', role: 'common_user' };
     this.confirmPassword = '';
-    this.loadUsers(); // Re-cargar los usuarios después de agregar
+    this.loadUsers(); 
   }
 
   goBackToUsers() {
@@ -129,14 +128,13 @@ export class AdminUsersPage implements OnInit {
   }
 
   editUser(user: any) {
-    this.selectedUser = { ...user };  // Clonamos el usuario para editar
+    this.selectedUser = { ...user }; 
     console.log(this.selectedUser.email);
   }
 
   async updateUser() {
     if (!this.selectedUser || !this.selectedUser.username) return;
   
-    // Buscar el documento en Firestore basado en el `username`
     const usersCollection = collection(this.firestore, 'users');
     const querySnapshot = await getDocs(usersCollection);
     
@@ -144,7 +142,7 @@ export class AdminUsersPage implements OnInit {
   
     querySnapshot.forEach((doc) => {
       if (doc.data()['username'] === this.selectedUser.username) {  
-        userDocRef = doc.ref; // Obtener referencia al documento
+        userDocRef = doc.ref; 
       }
     });
   
@@ -153,18 +151,17 @@ export class AdminUsersPage implements OnInit {
       return;
     }
   
-    // Actualizar los datos en Firestore
     await updateDoc(userDocRef, {
       fullName: this.selectedUser.fullName,
       email: this.selectedUser.email
     });
   
-    this.selectedUser = null; // Cierra el modal
-    await this.loadUsers(); // Recargar la lista de usuarios
+    this.selectedUser = null; 
+    await this.loadUsers(); 
   }
 
   cancelEdit() {
-    this.selectedUser = null;  // Opcional, limpia el usuario seleccionado si lo deseas
+    this.selectedUser = null;  
   }
   
   goToHome() {
@@ -173,3 +170,4 @@ export class AdminUsersPage implements OnInit {
   }
   
 }
+///*Autor: Evan Salvador Gálvez Barajas 2022171006*/
