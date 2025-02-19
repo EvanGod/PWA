@@ -1,32 +1,53 @@
 #container {
-    max-width: 400px;
-    width: 100%;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 20px;
-    border-radius: 16px;
-    background: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  #container strong {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-    display: block;
-  }
-  
-  #container ion-button {
-    --background: #6200ee;
-    --background-hover: #3700b3;
-    --color: #fff;
-    margin-top: 15px;
-    border-radius: 8px;
-    padding: 12px 24px;
-    font-size: 16px;
-  }
-  
-    /*author: Evan Salvador Gálvez Barajas*/
+  max-width: 400px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 20px;
+  border-radius: 16px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#container strong {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+  display: block;
+}
+
+#container p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.custom-button {
+  --background: #6200ee;
+  --background-hover: #3700b3;
+  --color: #fff;
+  margin-top: 20px;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-button:hover {
+  --background: #3700b3;
+  --background-hover: #6200ee;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.custom-button:active {
+  --background: #6200ee;
+  --background-hover: #3700b3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Author: Evan Salvador Gálvez Barajas */

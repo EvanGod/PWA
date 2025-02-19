@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Administrar Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="view-users">
+        <ion-label>Ver Usuarios</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="add-user">
+        <ion-label>Agregar Usuario</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+
+    <ion-tab id="view-users" tab="view-users">
+      <ion-content>
+        <div id="view-users-container">
+          <ion-button class="go-home-btn" (click)="goToHome()">Volver al inicio</ion-button>
+          <div *ngIf="users.length > 0">
+            <ion-list>
+              <ion-item *ngFor="let user of users">
+                <ion-label>
+                  <h2>{{ user.fullName }}</h2>
+                  <p>{{ user.email }}</p>
+                  <ion-button fill="clear" (click)="editUser(user)">Editar</ion-button>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+          <div *ngIf="users.length === 0">
+            <p>No hay usuarios registrados.</p>
+          </div>
+          
+        </div>
+       
+      </ion-content>
+      
+    </ion-tab>
+    
+
+    <ion-tab id="add-user" tab="add-user">
+      <ion-content>
+        <div id="add-user-container">
+          <strong>Agregar Usuario</strong>
+
+          <div class="scroll-container">
+            <ion-item>
+              <ion-label position="stacked">Correo Electrónico</ion-label>
+              <ion-input type="email" [(ngModel)]="newUser.email" placeholder="ejemplo@correo.com" (input)="validateForm()"></ion-input>
+            </ion-item>
+            <p *ngIf="!emailValid && newUser.email.length > 0" class="error-msg">Correo inválido</p>
+
+            <ion-item>
+              <ion-label position="stacked">Nombre Completo</ion-label>
+              <ion-input type="text" [(ngModel)]="newUser.fullName" placeholder="Juan Pérez" (input)="validateForm()" (ionInput)="formatFullName()"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Usuario</ion-label>
+              <ion-input type="text" [(ngModel)]="newUser.username" placeholder="Usuario123" (input)="removeSpaces()" (input)="validateForm()"></ion-input>
+            </ion-item>
+            <p *ngIf="newUser.username.includes(' ')" class="error-msg">El usuario no puede contener espacios</p>
+
+            <ion-item>
+              <ion-label position="stacked">Contraseña</ion-label>
+              <ion-input type="password" [(ngModel)]="newUser.password" placeholder="********" (input)="validatePassword()"></ion-input>
+            </ion-item>
+            <p *ngIf="!passwordValid && newUser.password.length > 0" class="error-msg">
+              La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.
+            </p>
+
+            <ion-item>
+              <ion-label position="stacked">Confirmar Contraseña</ion-label>
+              <ion-input type="password" [(ngModel)]="confirmPassword" placeholder="********" (input)="validateForm()"></ion-input>
+            </ion-item>
+            <p *ngIf="newUser.password && confirmPassword && newUser.password !== confirmPassword" class="error-msg">
+              Las contraseñas no coinciden
+            </p>
+
+            <ion-item>
+              <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+              <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="newUser.birthDate" (ionChange)="validateForm()"></ion-datetime>
+            </ion-item>
+            <p *ngIf="!birthDateValid && newUser.birthDate" class="error-msg">
+              Debes tener al menos 18 años para registrarte.
+            </p>
+
+            <ion-button expand="full" [disabled]="!formValid" (click)="addUser()">Agregar Usuario</ion-button>
+          </div>
+        </div>
+      </ion-content>
+    </ion-tab>
+  </ion-tabs>
+
+
+  <ion-modal [isOpen]="selectedUser !== null" backdropDismiss="false">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Editar Usuario</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="cancelEdit()">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <!-- Asegúrate de que selectedUser tiene todos los datos antes de mostrar el contenido -->
+      <div *ngIf="selectedUser">
+        <ion-item>
+          <ion-label position="stacked">Nombre Completo</ion-label>
+          <ion-input type="text" [(ngModel)]="selectedUser.fullName"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="stacked">Correo Electrónico</ion-label>
+          <ion-input type="email" [(ngModel)]="selectedUser.email"></ion-input>
+        </ion-item>
+  
+  
+        <ion-button expand="full" (click)="updateUser()">Guardar Cambios</ion-button>
+        <ion-button expand="full" (click)="cancelEdit()">Cerrar</ion-button>
+      </div>
+    </ion-content>
+  </ion-modal>
+  
+  
+  
+  
+  
+  
+  
+  
+
+</ion-content>

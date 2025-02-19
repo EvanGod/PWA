@@ -1,0 +1,229 @@
+/* Estilos generales */
+ion-header {
+    --background: #6200ee;
+    --color: white;
+}
+
+ion-toolbar {
+    --background: #6200ee;
+    --color: white;
+}
+
+ion-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Diseño de las pestañas */
+ion-tab-bar {
+    --background: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+ion-tab-button {
+    --color: #6200ee;
+    --color-selected: #3700b3;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 12px;
+    transition: transform 0.2s ease-in-out;
+}
+
+ion-tab-button:hover {
+    transform: scale(1.1);
+}
+
+/* Contenedor principal */
+#add-user-container, #view-users-container {
+    max-width: 400px;
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 30px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+}
+
+/* Contenedor de los usuarios */
+#view-users-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 50px 15px 15px 15px;  /* Añadido espacio arriba para que no se solape el botón */
+    max-height: 60vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+#view-users-container::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+#view-users-container::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+#view-users-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Ajustes de estilo para el contenedor scrollable */
+.scroll-container {
+    overflow-y: auto;
+    max-height: 60vh;
+    padding-right: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+strong {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    display: block;
+}
+
+ion-item {
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+ion-input {
+    --background: #f4f4f4;
+    --color: #333;
+    --border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 8px;
+    transition: background 0.3s ease-in-out;
+}
+
+ion-input:focus {
+    --background: #e1e1e1;
+}
+
+ion-button {
+    --background: #6200ee;
+    --background-hover: #3700b3;
+    --color: white;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 18px;
+    width: 100%;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+ion-button:hover {
+    background: #3700b3;
+    transform: translateY(-2px);
+}
+
+ion-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.register-btn {
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.error-msg {
+    color: #e53935;
+    font-size: 14px;
+    text-align: left;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+/* Modal de edición */
+ion-modal {
+    --background: white;
+    --border-radius: 12px;
+    padding: 25px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+ion-modal ion-header {
+    --background: #6200ee;
+    --color: white;
+}
+
+ion-modal ion-button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    font-size: 16px;
+    background: #6200ee;
+    color: white;
+    border-radius: 8px;
+}
+
+/* Diseño de la lista de usuarios */
+ion-list {
+    margin-top: 20px;
+    padding: 10px 0;
+}
+
+ion-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+ion-item:hover {
+    transform: translateY(-2px);
+}
+
+/* Estilo del botón "Volver al inicio" - parte superior */
+.go-home-btn {
+    --background: #6200ee;
+    --background-hover: #3700b3;
+    --color: white;
+    border-radius: 50%;
+    padding: 6px 12px; /* Botón pequeño */
+    font-size: 12px; /* Fuente pequeña */
+    position: absolute;
+    top: 15px; /* Ajustado a la parte superior */
+    left: 50%;
+    transform: translateX(-50%); /* Centrado horizontalmente */
+    min-width: 80px; /* Asegura un tamaño mínimo */
+    text-align: center; /* Centrado del texto */
+    transition: background 0.3s ease-in-out; /* Cambio suave del color */
+}
+
+.go-home-btn:hover {
+    background: #3700b3; /* Cambio de color al pasar el mouse */
+    box-shadow: 0 0 8px 2px rgba(55, 0, 179, 0.5); /* Efecto de resplandor */
+}
+
+.go-home-btn:focus {
+    outline: none;
+}

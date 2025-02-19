@@ -1,8 +1,12 @@
 <ion-content [fullscreen]="true" class="ion-text-center">
-  <div id="container">
+  <div id="container" *ngIf="isTokenValid">
     <strong>Bienvenido, {{ fullName }}!</strong>
-    <ion-button  (click)="logout()">Cerrar sesión</ion-button>
-  </div>
+    <p>Rol: {{ role }}</p>
 
-  <!--author: Evan Salvador Gálvez Barajas-->
+    <ion-button class="custom-button" (click)="goToProfile()">Ver mi perfil</ion-button>
+
+    <ion-button class="custom-button" *ngIf="isAdmin" (click)="goToAdminUsers()">Administrar usuarios</ion-button>
+
+    <ion-button class="custom-button" (click)="logout()">Cerrar sesión</ion-button>
+  </div>
 </ion-content>

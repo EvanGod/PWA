@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
-
-interface User {
-  email: string;
-  fullName: string;
-  username: string;
-  password: string;
-  birthDate: string;
-}
+import { Firestore, collection, addDoc, query, where, getDocs } from '@angular/fire/firestore';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
-  standalone: false
+  standalone: false,
 })
 export class RegisterPage {
   email: string = '';
@@ -30,7 +24,11 @@ export class RegisterPage {
   usernameValid: boolean = true;
   birthDateValid: boolean = true;
 
-  constructor(public navCtrl: NavController, private alertController: AlertController) {}
+  constructor(
+    public navCtrl: NavController,
+    private alertController: AlertController,
+    private firestore: Firestore 
+  ) {}
 
   validateForm() {
     this.emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email);
@@ -77,43 +75,74 @@ export class RegisterPage {
     return age > 18 || (age === 18 && (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0)));
   }
 
+  async checkIfUserExists() {
+    const usersCollection = collection(this.firestore, 'users');
+    const qEmail = query(usersCollection, where('email', '==', this.email));
+    const qUsername = query(usersCollection, where('username', '==', this.username));
+
+    const emailSnapshot = await getDocs(qEmail);
+    const usernameSnapshot = await getDocs(qUsername);
+
+    if (!emailSnapshot.empty) {
+      return 'El email ya está registrado';
+    }
+    if (!usernameSnapshot.empty) {
+      return 'El nombre de usuario ya está registrado';
+    }
+    return null;
+  }
+
   async registerUser() {
     if (!this.formValid) return;
 
-    const storedUsers: User[] = JSON.parse(localStorage.getItem('userRecords') || '[]');
-
-    const userExists = storedUsers.some((user: User) => user.username === this.username || user.email === this.email);
-    if (userExists) {
+    const userExistsMessage = await this.checkIfUserExists();
+    if (userExistsMessage) {
       const alert = await this.alertController.create({
         header: 'Error',
-        message: 'El usuario o el correo ya están registrados.',
+        message: userExistsMessage,
         buttons: ['OK'],
       });
       await alert.present();
       return;
     }
 
-    const newUser: User = {
-      email: this.email,
-      fullName: this.fullName,
-      username: this.username,
-      password: this.password,
-      birthDate: this.birthDate,
-    };
+    try {
+      const hashedPassword = CryptoJS.AES.encrypt(this.password, 'secreto').toString();
 
-    storedUsers.push(newUser);
-    localStorage.setItem('userRecords', JSON.stringify(storedUsers));
-    console.log('Usuarios Registrados:', storedUsers);
+      const hashedRole = CryptoJS.AES.encrypt('common_user', 'secreto').toString(); 
 
-    const alert = await this.alertController.create({
-      header: 'Registro Exitoso',
-      message: `Bienvenido ${this.fullName}`,
-      buttons: ['OK'],
-    });
+      const newUser = {
+        email: this.email,
+        fullName: this.fullName,
+        username: this.username,
+        password: hashedPassword, 
+        birthDate: this.birthDate,
+        role: hashedRole, 
+        createdAt: new Date(), 
+      };
 
-    await alert.present();
-    this.navCtrl.navigateBack('/home'); 
+      const usersCollection = collection(this.firestore, 'users');
+      await addDoc(usersCollection, newUser);
+
+      const alert = await this.alertController.create({
+        header: 'Registro Exitoso',
+        message: `Bienvenido ${this.fullName}`,
+        buttons: ['OK'],
+      });
+      await alert.present();
+
+      this.navCtrl.navigateBack('/home');
+    } catch (error) {
+      console.error('Error al registrar usuario en Firestore:', error);
+
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: 'Hubo un problema al registrar el usuario. Inténtalo de nuevo.',
+        buttons: ['OK'],
+      });
+      await alert.present();
+    }
   }
 }
 
-//author: Evan Salvador Gálvez Barajas
+//Autor: Evan Salvador Gálvez Barajas
