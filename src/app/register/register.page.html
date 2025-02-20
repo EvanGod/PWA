@@ -1,54 +1,63 @@
-<ion-content>
-  <div id="register-container">
-    <strong>Registro de Usuario</strong>
+<ion-content class="register-content">
+  <div class="container">
+    <ion-card class="register-card">
+      <ion-card-header>
+        <ion-card-title class="title">Registro de Usuario</ion-card-title>
+      </ion-card-header>
 
-    <div class="scroll-container">
-      <ion-item>
-        <ion-label position="stacked">Correo Electrónico</ion-label>
-        <ion-input type="email" [(ngModel)]="email" placeholder="ejemplo@correo.com" (input)="validateForm()"></ion-input>
-      </ion-item>
-      <p *ngIf="!emailValid && email.length > 0" class="error-msg">Correo inválido</p>
+      <ion-card-content>
+        <div class="scroll-container">
+          <ion-item>
+            <ion-label position="stacked">Correo Electrónico</ion-label>
+            <ion-input type="email" [(ngModel)]="email" placeholder="ejemplo@correo.com" (input)="validateForm()"></ion-input>
+          </ion-item>
+          <p *ngIf="!emailValid && email.length > 0" class="error-msg">Correo inválido</p>
 
-      <ion-item>
-        <ion-label position="stacked">Nombre Completo</ion-label>
-        <ion-input type="text" [(ngModel)]="fullName" placeholder="Juan Pérez" (input)="formatFullName()"></ion-input>
-      </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Nombre Completo</ion-label>
+            <ion-input type="text" [(ngModel)]="fullName" placeholder="Juan Pérez" (input)="formatFullName()"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked">Usuario</ion-label>
-        <ion-input type="text" [(ngModel)]="username" placeholder="Usuario123 " (input)="removeSpaces()" (input)="validateForm()"></ion-input>
-      </ion-item>
-      <p *ngIf="username.includes(' ')" class="error-msg">El usuario no puede contener espacios</p>
+          <ion-item>
+            <ion-label position="stacked">Usuario</ion-label>
+            <ion-input type="text" [(ngModel)]="username" placeholder="Usuario123" (input)="removeSpaces(); validateForm()"></ion-input>
+          </ion-item>
+          <p *ngIf="username.includes(' ')" class="error-msg">El usuario no puede contener espacios</p>
 
-      <ion-item>
-        <ion-label position="stacked">Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="password" placeholder="********" (input)="validatePassword()"></ion-input>
-      </ion-item>
-      <p *ngIf="!passwordValid && password.length > 0" class="error-msg">
-        La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.
-      </p>
+          <ion-item>
+            <ion-label position="stacked">Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="password" placeholder="********" (input)="validatePassword()"></ion-input>
+          </ion-item>
+          <p *ngIf="!passwordValid && password.length > 0" class="error-msg">
+            La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.
+          </p>
 
-      <ion-item>
-        <ion-label position="stacked">Confirmar Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="confirmPassword" placeholder="********" (input)="validateForm()"></ion-input>
-      </ion-item>
-      <p *ngIf="password && confirmPassword && password !== confirmPassword" class="error-msg">
-        Las contraseñas no coinciden
-      </p>
+          <ion-item>
+            <ion-label position="stacked">Confirmar Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="confirmPassword" placeholder="********" (input)="validateForm()"></ion-input>
+          </ion-item>
+          <p *ngIf="password && confirmPassword && password !== confirmPassword" class="error-msg">
+            Las contraseñas no coinciden
+          </p>
 
-      <ion-item>
-        <ion-label position="stacked">Fecha de Nacimiento</ion-label>
-        <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="birthDate" (ionChange)="validateForm()"></ion-datetime>
-      </ion-item>
-      <p *ngIf="!birthDateValid && birthDate" class="error-msg">
-        Debes tener al menos 18 años para registrarte.
-      </p>
+          <ion-item>
+            <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+            <ion-datetime presentation="date" [(ngModel)]="birthDate" (ionChange)="validateForm()"></ion-datetime>
+          </ion-item>
+          <p *ngIf="!birthDateValid && birthDate" class="error-msg">
+            Debes tener al menos 18 años para registrarte.
+          </p>
 
-      <ion-button expand="full" [disabled]="!formValid" (click)="registerUser()">Registrarse</ion-button>
-      <ion-button expand="full" fill="clear" class="register-btn" (click)="navCtrl.navigateBack('/home')">
-        ¿Ya tienes cuenta? Iniciar sesión
-      </ion-button>
-    </div>
+          <ion-button expand="full" [disabled]="!formValid" (click)="registerUser()">Registrarse</ion-button>
+          <ion-button expand="full" fill="clear" class="register-btn" (click)="navCtrl.navigateBack('/home')">
+            ¿Ya tienes cuenta? Iniciar sesión
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
   </div>
-  <!--author: Evan Salvador Gálvez Barajas-->
 </ion-content>
+
+
+  <!--author: Evan Salvador Gálvez Barajas-->
+

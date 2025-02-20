@@ -1,5 +1,4 @@
 <ion-content [fullscreen]="true">
-
   <div *ngIf="isLoading" class="loading-container">
     <img src="assets/logo.png" alt="Logo" class="app-logo"> 
     <div class="loading-bar">
@@ -8,18 +7,21 @@
   </div>
 
   <div *ngIf="!isLoading" id="container">
-    <strong>Hola mundo</strong>
-    <ion-button (click)="showMessage()" class="button">Mostrar mensaje</ion-button>
+    <div class="title">Hola mundo</div>
+    <ion-button (click)="showMessage()" class="button full-width">Mostrar mensaje</ion-button>
     <div *ngIf="messageVisible" class="message-box">
       Hi!!, ¡EvanGod!, well done!!
     </div>
   </div>
 
   <div *ngIf="!isLoading" id="login-container">
-    <ion-input type="text" placeholder="Username" [(ngModel)]="username" (input)="validateFields()"></ion-input>
-    <ion-input type="password" placeholder="Password" [(ngModel)]="password" (input)="validateFields()"></ion-input>
-    <ion-button [disabled]="!isValid" (click)="login()">Ingresar</ion-button>
-    <ion-button fill="clear" (click)="goToRegister()" class="register-btn">¿No tienes cuenta? Regístrate</ion-button>
+    <div class="login-form">
+      <ion-input type="text" placeholder="Usuario" [(ngModel)]="username" (input)="validateFields()" class="input-field"></ion-input>
+      <ion-input type="password" placeholder="Contraseña" [(ngModel)]="password" (input)="validateFields()" class="input-field"></ion-input>
+      <ion-button [disabled]="!isValid" (click)="login()" class="button full-width">Ingresar</ion-button>
+      <ion-button fill="clear" (click)="goToRegister()" class="register-btn full-width">¿No tienes cuenta? Regístrate</ion-button>
+    </div>
   </div>
-  <!--author: Evan Salvador Gálvez Barajas-->
+
+  <!--author: Evan Salvador Gálvez Barajas 2022171006-->
 </ion-content>

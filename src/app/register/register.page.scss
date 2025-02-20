@@ -1,81 +1,96 @@
-#register-container {
-  max-width: 400px;
-  width: 90%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+.register-content {
+  --background: linear-gradient(to bottom, #ECEFF1, #CFD8DC);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   padding: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.register-card {
+  width: 100%;
   border-radius: 16px;
-  background: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-height: 80vh;
-  overflow: hidden;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .scroll-container {
+  max-height: 400px;
   overflow-y: auto;
-  max-height: 60vh;
   padding-right: 10px;
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
 }
 
 .scroll-container::-webkit-scrollbar {
-  display: none; 
-}
-
-strong {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 15px;
-  display: block;
-}
-
-ion-item {
-  margin-bottom: 10px;
-}
-
-ion-input {
-  --background: #fff;
-  --color: #333;
-  --border-radius: 8px;
-  padding: 10px;
-}
-
-ion-button {
-  --background: #6200ee;
-  --background-hover: #3700b3;
-  --color: #fff;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 16px;
-  width: 100%;
-}
-
-ion-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.register-btn {
-  width: 100%;
-  margin-top: 10px;
-  text-align: center;
+  display: none;
 }
 
 .error-msg {
-  color: red;
-  font-size: 14px;
-  text-align: left;
-  margin-left: 15px;
+  color: #D32F2F;
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.register-btn {
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+ion-button {
+  --color: #FFFFFF;
+  border-radius: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+ion-button:hover {
+  background: #6A4D9B;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 ion-button:active {
-  transform: scale(0.98);
+  transform: translateY(0px);
+}
+
+ion-button[disabled] {
+  --background: #D1C4E9;
+  box-shadow: none;
+}
+
+ion-button:not([disabled]) {
+  --background: #7E57C2;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+ion-button.full-width {
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #6A1B9A;
 }
 
 /*Autor: Evan Salvador Gálvez Barajas 2022171006*/

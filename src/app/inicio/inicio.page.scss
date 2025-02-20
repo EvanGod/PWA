@@ -1,53 +1,106 @@
+ion-content {
+  --background: #ECEFF1; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  padding: 0; 
+}
+
+
 #container {
-  max-width: 400px;
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   padding: 20px;
+  width: 100%;
+  max-width: 450px; 
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
-  background: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 40px;
 }
 
-#container strong {
-  font-size: 24px;
-  color: #333;
+strong {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #6A1B9A; 
   margin-bottom: 15px;
-  display: block;
 }
 
-#container p {
-  font-size: 16px;
-  color: #666;
+p {
+  font-size: 1.1rem;
+  color: #7E57C2; 
   margin-bottom: 20px;
 }
 
-.custom-button {
-  --background: #6200ee;
-  --background-hover: #3700b3;
-  --color: #fff;
-  margin-top: 20px;
+.button-container {
+  display: flex;
+  justify-content: center; 
+  gap: 10px; 
+  margin-bottom: 20px; 
+  width: 100%;
+}
+
+ion-button.custom-button {
+  --color: #FFFFFF;
   border-radius: 12px;
-  padding: 14px 28px;
-  font-size: 18px;
+  font-weight: bold;
   text-transform: uppercase;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  flex: 1; 
+  max-width: 180px; 
 }
 
-.custom-button:hover {
-  --background: #3700b3;
-  --background-hover: #6200ee;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+ion-button.custom-button:hover {
+  background: #6A4D9B;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-.custom-button:active {
-  --background: #6200ee;
-  --background-hover: #3700b3;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ion-button.custom-button:active {
+  transform: translateY(0px);
+}
+
+ion-button.custom-button[disabled] {
+  --background: #D1C4E9; 
+  box-shadow: none;
+}
+
+ion-button.custom-button:not([disabled]) {
+  --background: #7E57C2;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+ion-button.custom-button.full-width {
+  width: 100%;
+}
+
+ion-button.custom-button *:not([disabled]) {
+  font-weight: bold;
+}
+
+ion-button.custom-button.register-btn {
+  color: #7E57C2; 
+  text-align: center;
+  font-weight: bold;
+}
+
+ion-button.custom-button.register-btn ion-button {
+  background: transparent;
+  color: #7E57C2;
+  text-transform: none;
+  font-weight: normal;
+}
+
+ion-icon {
+  font-size: 1.5rem; 
+  margin-right: 10px; 
 }
 
 /* Author: Evan Salvador Gálvez Barajas */

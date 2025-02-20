@@ -1,223 +1,159 @@
-ion-header {
-    --background: #6200ee;
-    --color: white;
-}
-
-ion-toolbar {
-    --background: #6200ee;
-    --color: white;
-}
-
-ion-title {
+#view-users-container, #add-user-container {
     text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: white;
-    text-transform: uppercase;
-}
-
-ion-tab-bar {
-    --background: #f9f9f9;
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-ion-tab-button {
-    --color: #6200ee;
-    --color-selected: #3700b3;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-    padding: 12px;
-    transition: transform 0.2s ease-in-out;
-}
-
-ion-tab-button:hover {
-    transform: scale(1.1);
-}
-
-#add-user-container, #view-users-container {
-    max-width: 400px;
-    width: 90%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    padding: 30px;
-    border-radius: 12px;
-    background: #ffffff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    max-height: 80vh;
-    overflow: hidden;
+    padding: 20px;
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
-    border: 1px solid #ddd;
-}
+    align-items: center;
+  }
+  
+  strong {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #6A1B9A; 
+    margin-bottom: 15px;
+  }
 
-#view-users-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 50px 15px 15px 15px;  
-    max-height: 60vh;
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-}
-
-#view-users-container::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-}
-
-#view-users-container::-webkit-scrollbar-thumb {
-    background: transparent;
-}
-
-#view-users-container::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.scroll-container {
-    overflow-y: auto;
-    max-height: 60vh;
-    padding-right: 10px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.scroll-container::-webkit-scrollbar {
-    display: none;
-}
-
-strong {
-    font-size: 26px;
-    color: #333;
+  .error-msg {
+    font-size: 0.9rem;
+    color: #FF4D4D;
+    margin-top: 5px;
+  }
+  
+  ion-tab-bar {
+    background-color: #ECEFF1;
+    padding: 10px 0;
+  }
+  
+  ion-tab-button {
+    color: #7E57C2;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .go-home-btn {
     margin-bottom: 20px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    display: block;
-}
-
-ion-item {
+    width: 100%;
+  }
+  
+  ion-item {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  ion-item h2 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  ion-item p {
+    font-size: 1rem;
+    color: #7E57C2;
+  }
+  
+  ion-button.clear {
+    color: #6A1B9A;
+    text-transform: none;
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 5px 0;
+  }
+  
+  .scroll-container {
+    width: 100%;
+  }
+  
+  ion-input, ion-datetime {
     margin-bottom: 20px;
     border-radius: 10px;
-}
-
-ion-input {
-    --background: #f4f4f4;
-    --color: #333;
-    --border-radius: 8px;
-    padding: 12px;
-    font-size: 16px;
-    margin-top: 8px;
-    transition: background 0.3s ease-in-out;
-}
-
-ion-input:focus {
-    --background: #e1e1e1;
-}
-
-ion-button {
-    --background: #6200ee;
-    --background-hover: #3700b3;
-    --color: white;
-    border-radius: 8px;
-    padding: 12px 24px;
-    font-size: 18px;
-    width: 100%;
-    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-ion-button:hover {
-    background: #3700b3;
-    transform: translateY(-2px);
-}
-
-ion-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.register-btn {
-    width: 100%;
-    margin-top: 15px;
-    text-align: center;
-}
-
-.error-msg {
-    color: #e53935;
-    font-size: 14px;
-    text-align: left;
-    margin-left: 20px;
-    font-weight: 500;
-}
-
-ion-modal {
-    --background: white;
-    --border-radius: 12px;
-    padding: 25px;
-    max-width: 90%;
-    margin: 0 auto;
-}
-
-ion-modal ion-header {
-    --background: #6200ee;
-    --color: white;
-}
-
-ion-modal ion-button {
-    margin-top: 15px;
-    padding: 12px 20px;
-    font-size: 16px;
-    background: #6200ee;
-    color: white;
-    border-radius: 8px;
-}
-
-ion-list {
-    margin-top: 20px;
-    padding: 10px 0;
-}
-
-ion-item {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #f9f9f9;
+  }
+  
+  ion-button.custom-button {
+    --color: #FFFFFF;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-ion-item:hover {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: none;
+    width: 100%;
+  }
+  
+  ion-button.custom-button:hover {
+    background: #6A4D9B;
     transform: translateY(-2px);
-}
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  ion-button.custom-button:active {
+    transform: translateY(0px);
+  }
+  
+  ion-button.custom-button[disabled] {
+    --background: #D1C4E9; 
+    box-shadow: none;
+  }
+  
+  ion-button.custom-button:not([disabled]) {
+    --background: #7E57C2;
+  }
+  
+  ion-button.custom-button.full-width {
+    width: 100%;
+  }
+  
+  ion-modal {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  ion-header {
+    background: #7E57C2;
+    color: #fff;
+  }
+  
+  ion-toolbar {
+    text-align: center;
+  }
+  
+  ion-header ion-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+  ion-button {
+    --color: #FFFFFF;
+    padding: 10px;
+    margin: 10px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
 
-.go-home-btn {
-    --background: #6200ee;
-    --background-hover: #3700b3;
-    --color: white;
-    border-radius: 50%;
-    padding: 6px 12px;
-    font-size: 12px; 
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    transform: translateX(-50%); 
-    min-width: 80px; 
-    text-align: center; 
-    transition: background 0.3s ease-in-out; 
-}
-
-.go-home-btn:hover {
-    background: #3700b3; 
-    box-shadow: 0 0 8px 2px rgba(55, 0, 179, 0.5); 
-}
-
-.go-home-btn:focus {
-    outline: none;
-}
-
-/*Autor: Evan Salvador Gálvez Barajas 2022171006*/
+.scroll-container {
+    overflow: hidden; 
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+  }
+  
+  .scroll-container::-webkit-scrollbar {
+    display: none; 
+  }
+  
+  
+  /* Autor: Evan Salvador Gálvez Barajas 2022171006 */
+  

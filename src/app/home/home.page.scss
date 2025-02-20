@@ -1,122 +1,129 @@
 .loading-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 100%;
-  max-width: 300px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .app-logo {
-  width: 100%;  
-  max-width: 150px;  
-  height: auto;  
-  object-fit: contain;  
-  margin-bottom: 10px; 
+  width: 100px;
+  margin-bottom: 20px;
 }
 
 .loading-bar {
-  width: 60%; 
-  height: 4px;
-  background-color: #f2f2f2;
-  border-radius: 8px;
-  position: relative;
+  width: 100px; 
+  height: 5px;
+  background-color: #D1C4E9; 
+  border-radius: 5px;
   overflow: hidden;
-  margin-top: 15px;
-  margin-left: auto;
-  margin-right: auto; 
 }
 
-.loading-bar .loading-inner {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
+.loading-inner {
+  width: 50%;
   height: 100%;
-  background: linear-gradient(to right, #6200ee, #3700b3);
-  animation: loadingBar 3s linear forwards;
+  background-color: #7E57C2;
+  animation: loading 1.5s infinite;
 }
 
-@keyframes loadingBar {
-  0% { left: -100%; }
-  100% { left: 0; }
-}
-
-.login-success-loading {
-  --spinner-color: #6200ee;  
-  --background: rgba(0, 0, 0, 0.4);  
-}
-
-ion-spinner[name="crescent"] {
-  --spinner-color: #6200ee;  
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 #container {
-  max-width: 400px;
-  width: 100%;
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   padding: 20px;
-  border-radius: 16px;
-  background: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#container strong {
-  font-size: 24px;
-  color: #333;
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #6A1B9A; 
   margin-bottom: 20px;
-  display: block;
+}
+
+.message-box {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #7E57C2; 
+  background-color: #F3E5F5;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 #login-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  width: 100%;
   max-width: 400px;
-  width: 100%;
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
   padding: 20px;
-  border-radius: 16px;
-  background: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#login-container ion-item {
-  margin-bottom: 15px;
-}
-
-#login-container ion-input {
-  --background: #fff;
-  --color: #333;
-  --border-radius: 8px;
-  padding: 10px;
-}
-
-#login-container ion-button {
-  --background: #6200ee;
-  --background-hover: #3700b3;
-  --color: #fff;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 16px;
+.input-field {
+  margin-bottom: 10px;
   width: 100%;
 }
 
-#login-container ion-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+ion-button {
+  --color: #FFFFFF;
+  border-radius: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: none;
+}
+
+ion-button:hover {
+  background: #6A4D9B;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+ion-button:active {
+  transform: translateY(0px);
+}
+
+ion-button[disabled] {
+  --background: #D1C4E9;
+  box-shadow: none;
+}
+
+ion-button:not([disabled]) {
+  --background: #7E57C2;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+ion-button.full-width {
+  width: 100%;
 }
 
 .register-btn {
-  width: 100%;
-  margin-top: 10px; 
-  text-align: center; 
+  color: #ffffff; 
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
-  /*author: Evan Salvador Gálvez Barajas*/
+.register-btn ion-button {
+  background: transparent;
+  color: #7E57C2;
+  text-transform: none;
+  font-weight: normal;
+}
+
+/*author: Evan Salvador Gálvez Barajas*/

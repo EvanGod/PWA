@@ -18,28 +18,28 @@
     <ion-tab id="view-users" tab="view-users">
       <ion-content>
         <div id="view-users-container">
-          <ion-button class="go-home-btn" (click)="goToHome()">Volver al inicio</ion-button>
+          <ion-button class="go-home-btn custom-button" (click)="goToHome()">Volver al inicio</ion-button>
+          
           <div *ngIf="users.length > 0">
             <ion-list>
               <ion-item *ngFor="let user of users">
                 <ion-label>
                   <h2>{{ user.fullName }}</h2>
                   <p>{{ user.email }}</p>
-                  <ion-button fill="clear" (click)="editUser(user)">Editar</ion-button>
+                  <ion-button class="clear" fill="clear" (click)="editUser(user)">
+                    Editar
+                  </ion-button>
                 </ion-label>
               </ion-item>
             </ion-list>
           </div>
+
           <div *ngIf="users.length === 0">
             <p>No hay usuarios registrados.</p>
           </div>
-          
         </div>
-       
       </ion-content>
-      
     </ion-tab>
-    
 
     <ion-tab id="add-user" tab="add-user">
       <ion-content>
@@ -88,13 +88,12 @@
               Debes tener al menos 18 años para registrarte.
             </p>
 
-            <ion-button expand="full" [disabled]="!formValid" (click)="addUser()">Agregar Usuario</ion-button>
+            <ion-button expand="full" class="custom-button" [disabled]="!formValid" (click)="addUser()">Agregar Usuario</ion-button>
           </div>
         </div>
       </ion-content>
     </ion-tab>
   </ion-tabs>
-
 
   <ion-modal [isOpen]="selectedUser !== null" backdropDismiss="false">
     <ion-header>
@@ -105,25 +104,24 @@
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-  
+
     <ion-content>
       <div *ngIf="selectedUser">
         <ion-item>
           <ion-label position="stacked">Nombre Completo</ion-label>
           <ion-input type="text" [(ngModel)]="selectedUser.fullName"></ion-input>
         </ion-item>
-  
+
         <ion-item>
           <ion-label position="stacked">Correo Electrónico</ion-label>
           <ion-input type="email" [(ngModel)]="selectedUser.email"></ion-input>
         </ion-item>
-  
-  
-        <ion-button expand="full" (click)="updateUser()">Guardar Cambios</ion-button>
-        <ion-button expand="full" (click)="cancelEdit()">Cerrar</ion-button>
+
+        <ion-button expand="full" class="custom-button" (click)="updateUser()">Guardar Cambios</ion-button>
+        <ion-button expand="full" class="custom-button" (click)="cancelEdit()">Cerrar</ion-button>
       </div>
     </ion-content>
   </ion-modal>
 </ion-content>
 
-<!--Autor: Evan Salvador Gálvez Barajas 2022171006-->
+<!-- Autor: Evan Salvador Gálvez Barajas 2022171006 -->

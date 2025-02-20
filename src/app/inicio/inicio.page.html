@@ -3,12 +3,21 @@
     <strong>Bienvenido, {{ fullName }}!</strong>
     <p>Rol: {{ role }}</p>
 
-    <ion-button class="custom-button" (click)="goToProfile()">Ver mi perfil</ion-button>
+    <div class="button-container">
 
-    <ion-button class="custom-button" *ngIf="isAdmin" (click)="goToAdminUsers()">Administrar usuarios</ion-button>
+      <ion-button class="custom-button" (click)="goToProfile()">
+        <ion-icon name="person-outline" slot="start"></ion-icon> Ver mi perfil
+      </ion-button>
 
-    <ion-button class="custom-button" (click)="logout()">Cerrar sesión</ion-button>
+      <ion-button class="custom-button" *ngIf="isAdmin" (click)="goToAdminUsers()">
+        <ion-icon name="people-outline" slot="start"></ion-icon> Administrar usuarios
+      </ion-button>
+    </div>
+
+    <ion-button class="custom-button" (click)="logout()">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon> Cerrar sesión
+    </ion-button>
   </div>
 </ion-content>
 
-<!--Autor: Evan Salvador Gálvez Barajas 2022171006-->
+<!-- Author: Evan Salvador Gálvez Barajas 2022171006 -->
